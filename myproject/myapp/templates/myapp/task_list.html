@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .task-completed {
+            background-color: green;
+        }
+        .task-not-completed {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+        {% for task in tasks %}
+            <li class="{% if task.completed %}task-completed{% else %}task-not-completed{% endif %}">
+                {{ task.title }}
+                <a href="{% url 'task_switch' task.id %}">Switch</a>
+                <a href="{% url 'task_delete' task.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
